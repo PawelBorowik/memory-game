@@ -1,38 +1,34 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
 
 
 function App() {
+  const cardColors=["red","red","brown","brown","green","green","blue","blue","yellow"
+  ,"yellow",
+  "orangered","orangered","violet","violet","steelblue","steelblue"]
 
+  
 
-  const [cards, setCards]= useState(["red", "red","brown", "brown", "green", "green", "blue", "blue", 
-  "yellow", "yellow", "orangered", "orangered", "violet", "violet", "steelblue", "steelblue"])
-  
- 
-      const iii = cards.map( card =>{
-        const position =Math.floor(Math.random()*cards.length)
-        // setCards(cards.splice(position, 1))
-        return(
-          <div className={`card ${cards[position]}`}></div>
-        )
-        }
-      )
-    
-     
-  
-    
+  let cards=[...cardColors]
+  // console.log(cards.length)
+
+  const randomCard = cards.map( (el, index)=>{
+      const position = Math.floor(Math.random()*cards.length)
+      const cardColor = cards.splice(position,1)
       
+      
+      console.log(position)
+    return(
+      <div key={index} className={`card ${cardColor}`}>{position}</div>
+      )
+  })
 
   return (
     <div className="container">
-      {/* <button onClick={()=>handleClick()}>Start</button> */}
-    <div className="App">
-          
-        {iii}
-      
-        </div>
+      <div className="App">
+          {randomCard}
+      </div>
     </div>
-    
   );
   
 }
